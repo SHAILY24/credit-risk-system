@@ -60,8 +60,10 @@ services:
       - ./backend/credit_risk_model.pkl:/app/credit_risk_model.pkl:ro
       - ./backend/model_info.json:/app/model_info.json:ro
       - backend_logs:/app/logs
-    ports:
-      - "127.0.0.1:8000:8000"
+    # Backend is reachable internally via the compose network (creditrisk-backend:8000).
+    # Host publish intentionally removed to avoid conflicting with another local :8000 service.
+    expose:
+      - "8000"
     networks:
       - creditrisk-network
     depends_on:
@@ -105,7 +107,7 @@ services:
     volumes:
       - ./nginx/nginx-initial.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
-      - "0.0.0.0:13960:80"
+      - "127.0.0.1:13185:80"
     networks:
       - creditrisk-network
     depends_on:

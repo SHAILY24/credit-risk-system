@@ -52,6 +52,17 @@ const Login: React.FC = () => {
           <Typography component="h2" variant="h6" align="center" sx={{ mt: 2 }}>
             Sign In
           </Typography>
+          <Alert severity="info" sx={{ mt: 2 }}>
+            <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 0.5 }}>
+              Test Account Credentials:
+            </Typography>
+            <Typography variant="body2">
+              Username: <strong>admin</strong>
+            </Typography>
+            <Typography variant="body2">
+              Password: <strong>admin</strong>
+            </Typography>
+          </Alert>
           {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField

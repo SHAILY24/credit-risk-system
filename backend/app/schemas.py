@@ -31,9 +31,9 @@ class UserCreate(UserBase):
     password: str = Field(..., min_length=8)
 
 class UserResponse(UserBase):
-    id: int
+    id: str
     is_active: bool
-    is_admin: bool
+    is_superuser: bool
     created_at: datetime
     
     class Config:

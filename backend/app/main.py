@@ -368,14 +368,14 @@ async def list_predictions(
     
     return [
         {
-            'prediction_id': p.id,
-            'default_probability': p.probability,
-            'prediction': p.prediction,
+            'prediction_id': str(p.id),
+            'default_probability': p.default_probability,
+            'prediction': p.prediction_result.get('prediction', 0),
             'risk_category': p.risk_category,
             'recommendation': p.recommendation,
-            'confidence': p.confidence,
-            'expected_loss': p.expected_loss,
-            'processing_time_ms': p.processing_time_ms,
+            'confidence': p.prediction_result.get('confidence', 0),
+            'expected_loss': p.prediction_result.get('expected_loss', 0),
+            'processing_time_ms': p.prediction_result.get('processing_time_ms', 0),
             'model_version': p.model_version
         }
         for p in predictions
@@ -436,7 +436,18 @@ async def list_users(
 ):
     """List all users (admin only)"""
     users = db.query(User).all()
-    return users
+    # Convert UUID to string for each user
+    return [
+        {
+            "id": str(user.id),
+            "username": user.username,
+            "email": user.email,
+            "is_active": user.is_active,
+            "is_superuser": user.is_superuser,
+            "created_at": user.created_at
+        }
+        for user in users
+    ]
 
 @app.get("/admin/audit-logs", tags=["Admin"])
 async def get_audit_logs(
