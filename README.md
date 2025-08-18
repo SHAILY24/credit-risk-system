@@ -247,7 +247,6 @@ For issues, questions, or suggestions:
 
 ## Acknowledgments
 
-- NJIT Data Mining Course for the foundational concepts
 - FastAPI community for the excellent framework
 - React community for the frontend tools
 - All contributors and testers
