@@ -35,7 +35,12 @@ class UserResponse(UserBase):
     is_active: bool
     is_superuser: bool
     created_at: datetime
-    
+
+    @validator('id', pre=True)
+    def _coerce_id_to_str(cls, v):
+        # User.id is a UUID column; serialize it as a plain string
+        return str(v)
+
     class Config:
         from_attributes = True
 

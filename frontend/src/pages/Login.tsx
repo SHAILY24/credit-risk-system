@@ -57,10 +57,10 @@ const Login: React.FC = () => {
               Test Account Credentials:
             </Typography>
             <Typography variant="body2">
-              Username: <strong>admin</strong>
+              Username: <strong>demo</strong>
             </Typography>
             <Typography variant="body2">
-              Password: <strong>admin</strong>
+              Password: <strong>demo1234</strong>
             </Typography>
           </Alert>
           {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
