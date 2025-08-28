@@ -7,24 +7,24 @@
 
 ## Overview
 
-Credit Risk System (CRS) is an advanced, AI-powered credit risk assessment platform that leverages machine learning to provide accurate credit scoring and risk analysis. Built with modern technologies and best practices, it offers a comprehensive solution for financial institutions and lending platforms.
+CRS scores credit risk with a scikit-learn model behind a FastAPI service and a React UI. It was the final project for a data mining course, then built out to run as a real deployment. You send applicant features, you get back a risk score and the inputs that drove it.
 
 ## Features
 
 ### Core Functionality
-- **AI-Powered Risk Assessment**: Advanced machine learning models for accurate credit scoring
-- **Real-time Predictions**: Instant credit risk evaluation with detailed insights
-- **Historical Analysis**: Track and analyze prediction history and trends
-- **API Key Management**: Secure API access with rate limiting and authentication
-- **User Management**: Role-based access control with admin capabilities
+- Credit scoring from a trained scikit-learn model
+- Prediction in one request, with the contributing features returned
+- Prediction history you can query and chart over time
+- API keys with rate limiting and authentication
+- Role-based access, including an admin role
 
 ### Technical Features
-- **RESTful API**: Well-documented API endpoints for integration
-- **Caching Layer**: Redis-powered caching for improved performance
-- **Database Persistence**: PostgreSQL for reliable data storage
-- **Containerized Deployment**: Docker-based architecture for easy deployment
-- **SSL/TLS Support**: Built-in HTTPS configuration with Let's Encrypt
-- **Monitoring Ready**: Prometheus and Grafana integration for system monitoring
+- A documented REST API for integration
+- Redis caching in front of the prediction path
+- PostgreSQL for persistence
+- Runs under Docker Compose
+- HTTPS via Let's Encrypt and Certbot
+- Optional Prometheus and Grafana for monitoring
 
 ## Tech Stack
 
@@ -80,14 +80,14 @@ docker compose up -d
 
 ## Live Demo
 
-🌐 **Live Application**: https://crs.shaily.dev
+Live application: https://crs.shaily.dev
 
 ### Demo Credentials
-- **Username**: `admin`
-- **Password**: `AdminCRS2024!@#`
-- **Access**: Full admin privileges
+- Username: `admin`
+- Password: `AdminCRS2024!@#`
+- Full admin privileges
 
-Feel free to explore the application with these credentials. The demo resets periodically.
+Log in with those and poke around. The demo resets periodically.
 
 ## Development Setup
 
@@ -151,12 +151,12 @@ curl -X POST "https://crs.shaily.dev/api/v1/auth/login" \
 
 ### Key Endpoints
 
-- `POST /api/v1/auth/register` - User registration
-- `POST /api/v1/auth/login` - User login
-- `GET /api/v1/auth/me` - Get current user
-- `POST /api/v1/predict` - Make credit risk prediction
-- `GET /api/v1/predictions` - Get prediction history
-- `GET /api/v1/api-keys` - Manage API keys
+- `POST /api/v1/auth/register` registers a user
+- `POST /api/v1/auth/login` logs in
+- `GET /api/v1/auth/me` returns the current user
+- `POST /api/v1/predict` makes a credit risk prediction
+- `GET /api/v1/predictions` returns prediction history
+- `GET /api/v1/api-keys` manages API keys
 
 Full API documentation available at `/api/docs` when running the application.
 
@@ -216,12 +216,12 @@ yarn test
 
 ## Security
 
-- **Authentication**: JWT-based authentication with secure token handling
-- **Rate Limiting**: API rate limiting to prevent abuse
-- **Input Validation**: Comprehensive input validation and sanitization
-- **HTTPS**: SSL/TLS encryption for all production traffic
-- **CORS**: Configured CORS policies for API access
-- **Secrets Management**: Environment-based secret configuration
+- JWT authentication with secure token handling
+- Rate limiting on the API to slow down abuse
+- Input validation and sanitization on request bodies
+- HTTPS for all production traffic
+- CORS policies set per origin
+- Secrets read from the environment, not committed
 
 ## Contributing
 
@@ -235,7 +235,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Support
 
@@ -247,18 +247,12 @@ For issues, questions, or suggestions:
 
 ## Acknowledgments
 
-- FastAPI community for the excellent framework
-- React community for the frontend tools
-- All contributors and testers
+Thanks to the FastAPI and React projects, and to anyone who tested this.
 
----
-
-**Built with ❤️ by [Shaily](https://github.com/SHAILY24)**
-
----
+Built by [Shaily](https://github.com/SHAILY24).
 
 ## Repository
 
-- **GitHub**: https://github.com/SHAILY24/credit-risk-system
-- **Live Demo**: https://crs.shaily.dev
-- **License**: MIT
+- GitHub: https://github.com/SHAILY24/credit-risk-system
+- Live Demo: https://crs.shaily.dev
+- License: MIT
